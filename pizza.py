@@ -26,3 +26,13 @@ class Pizza:
         """Add a topping to the pizza"""
         if topping not in self.toppings:
             self.toppings.append(topping)
+
+    def __str__(self):
+        # create printable description of the pizza such as
+        # "small pizza with mushroom" or "small plain pizza"
+        description = self.size
+        if self.toppings:
+            description += " pizza with " + ", ".join(self.toppings)
+        else:
+            description += " plain cheese pizza"
+        return description
