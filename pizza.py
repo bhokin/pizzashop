@@ -3,17 +3,18 @@ from enum import Enum
 
 class PizzaSize(Enum):
     # Enum members written as: name = value
-    small = 120
-    medium = 200
-    large = 280
-    jumbo = 400
-
-    def __str__(self):
-        return self.name
+    small = {'base_price': 120, 'topping': 20}
+    medium = {'base_price': 200, 'topping': 25}
+    large = {'base_price': 300, 'topping': 30}
+    jumbo = {'base_price': 400, 'topping': 35}
 
     @property
     def price(self):
-        return self.value
+        return self.value['base_price']
+
+    @property
+    def topping_price(self):
+        return self.value['topping']
 
 
 class Pizza:
@@ -27,7 +28,7 @@ class Pizza:
 
     def get_price(self):
         """Price of pizza depends on size and number of toppings."""
-        return self.size.price + 20*len(self.toppings)
+        return self.size.price + self.size.topping_price * len(self.toppings)
     
     def add_topping(self, topping):
         """Add a topping to the pizza"""
