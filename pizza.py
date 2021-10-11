@@ -6,6 +6,7 @@ class PizzaSize(Enum):
     small = 120
     medium = 200
     large = 280
+    jumbo = 400
 
     def __str__(self):
         return self.name
